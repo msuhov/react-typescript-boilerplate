@@ -1,0 +1,4 @@
+{
+  "app.containers.HomePage.header": "DE This is the HomePage container!",
+  "app.containers.NotFoundPage.header": "DE This is the NotFoundPage container!"
+}

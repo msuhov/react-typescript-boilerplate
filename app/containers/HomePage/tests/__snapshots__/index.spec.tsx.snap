@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomePage /> should render and match the snapshot 1`] = `
+<div>
+  <h1>
+    <span>
+      This is the HomePage container!
+    </span>
+  </h1>
+  <div>
+    Locale: 
+    en
+  </div>
+  <button
+    type="button"
+  >
+    Change locale
+  </button>
+</div>
+`;

@@ -1,0 +1,24 @@
+{
+  "include": [
+    "./app",
+    "./@types"
+  ],
+  "extends": "./node_modules/react-redux-typescript-scripts/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "app",
+    "outDir": "build/dist",
+    "noEmit": false,
+    "jsx": "react",
+    "types": [
+      "jest",
+      "webpack-env"
+    ],
+    "importHelpers": true
+  },
+  "exclude": [
+    "internals",
+    "server",
+    "docs",
+    "build"
+  ]
+}
