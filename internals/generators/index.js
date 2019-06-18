@@ -41,7 +41,7 @@ module.exports = plop => {
       config.path,
       plop.getHelper('properCase')(answers.name),
       '**',
-      '**.js',
+      '**.tsx',
     )}`;
 
     try {

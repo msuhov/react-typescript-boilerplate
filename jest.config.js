@@ -22,7 +22,7 @@ module.exports = {
   },
   setupFilesAfterEnv: ['react-testing-library/cleanup-after-each'],
   setupFiles: ['raf/polyfill'],
-  testRegex: 'tests/.*\\.spec\\.(ts|tsx)$',
+  testRegex: '__tests__/.*\\.spec\\.(ts|tsx)$',
   snapshotSerializers: [],
   transform: {
     '^.+\\.tsx?$': 'ts-jest',

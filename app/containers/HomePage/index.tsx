@@ -32,7 +32,13 @@ export const HomePage: React.FC<Props> = props => (
       <FormattedMessage {...messages.header} />
     </h1>
     <div>Locale: {props.locale}</div>
-    <button onClick={() => props.changeLocale({ locale: 'de' })} type="button">
+    <button
+      onClick={() => {
+        throw Error('asd');
+        props.changeLocale({ locale: 'de' });
+      }}
+      type="button"
+    >
       Change locale
     </button>
   </div>
