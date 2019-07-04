@@ -7,7 +7,6 @@ import { createMemoryHistory } from 'history';
 import { Task } from 'redux-saga';
 
 import store from '../../store';
-
 import getSagaInjectors from '../sagaInjectors';
 import { SagaInjectorConfig } from '../models';
 import { SagaInjectorMode } from '../constants';

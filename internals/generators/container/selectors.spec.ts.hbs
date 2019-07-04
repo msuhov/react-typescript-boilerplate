@@ -1,0 +1,20 @@
+ import { select{{ properCase name }}Domain } from '../selectors';
+
+describe('select{{ properCase name }}Domain', () => {
+  it('Expect to have unit tests specified', () => {
+   const domain = 'testDomain';
+   const state = {
+     test: {
+      domain,
+     },
+   };
+
+   const actual = select{{ properCase name }}Domain(state);
+
+   expect(actual).toEqual(domain);
+  });
+
+  it('Expect to have additional unit tests specified', () => {
+   expect(true).toEqual(false);
+  });
+});

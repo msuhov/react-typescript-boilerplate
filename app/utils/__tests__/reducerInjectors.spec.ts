@@ -7,7 +7,6 @@ import { Action, Reducer, Store } from 'redux';
 import { createMemoryHistory } from 'history';
 
 import store from '../../store';
-
 import reducerInjectors, { injectReducerFactory } from '../reducerInjectors';
 import { ReducerInjectorConfig } from '../models';
 

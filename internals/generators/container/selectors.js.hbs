@@ -1,22 +1,13 @@
 import { createSelector } from 'reselect';
+import { prop } from 'ramda';
+
+import { RootState } from 'store';
+
 import { initialState } from './reducer';
 
-/**
- * Direct selector to the {{ camelCase name }} state domain
- */
+export const select{{ properCase name }} = (state: RootState) => state.{{ camelCase name }} || initialState;
 
-const select{{ properCase name }}Domain = state => state.{{ camelCase name }} || initialState;
-
-/**
- * Other specific selectors
- */
-
-/**
- * Default selector used by {{ properCase name }}
- */
-
-const makeSelect{{ properCase name }} = () =>
-  createSelector(select{{ properCase name }}Domain, substate => substate);
-
-export default makeSelect{{ properCase name }};
-export { select{{ properCase name }}Domain };
+export const select{{ properCase name }}Domain = createSelector(
+  select{{ properCase name }},
+  prop('domain'),
+);

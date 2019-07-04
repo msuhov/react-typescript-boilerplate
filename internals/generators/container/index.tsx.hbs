@@ -1,19 +1,13 @@
-/**
- *
- * {{properCase name }}
- *
- */
-
 {{#if memo}}
 import React, { memo } from 'react';
 {{else}}
 import React from 'react';
 {{/if}}
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 {{#if wantHeaders}}
 import { Helmet } from 'react-helmet';
 {{/if}}
+
 {{#if wantMessages}}
 import { FormattedMessage } from 'react-intl';
 {{/if}}
@@ -26,8 +20,9 @@ import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 {{/if}}
 {{#if wantActionsAndReducer}}
+import { RootState } from 'store';
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelect{{properCase name}} from './selectors';
+import { select{{properCase name}}Domain } from './selectors';
 import reducer from './reducer';
 {{/if}}
 {{#if wantSaga}}
@@ -37,7 +32,11 @@ import saga from './saga';
 import messages from './messages';
 {{/if}}
 
-export function {{ properCase name }}() {
+interface Props {
+  domain: string;
+}
+
+export const {{ properCase name }}: React.FC<Props> = props => {
   {{#if wantActionsAndReducer}}
   useInjectReducer({ key: '{{ camelCase name }}', reducer });
   {{/if}}
@@ -56,30 +55,19 @@ export function {{ properCase name }}() {
     {{#if wantMessages}}
       <FormattedMessage {...messages.header} />
     {{/if}}
+      <span>{ props.domain }</span>
     </div>
   );
 }
 
-{{ properCase name }}.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
-
 {{#if wantActionsAndReducer}}
-const mapStateToProps = createStructuredSelector({
-  {{ camelCase name }}: makeSelect{{properCase name}}(),
+const mapStateToProps = createStructuredSelector<RootState, Props>({
+  domain: select{{properCase name}}Domain,
 });
 {{/if}}
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
 {{#if wantActionsAndReducer}}
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
-{{else}}
-const withConnect = connect(null, mapDispatchToProps);
+const withConnect = connect(mapStateToProps);
 {{/if}}
 
 export default compose(

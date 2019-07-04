@@ -4,9 +4,7 @@ import { FormattedMessage, defineMessages } from 'react-intl';
 import { Provider } from 'react-redux';
 
 import store from '../../../store';
-
 import ConnectedLanguageProvider, { LanguageProvider } from '../index';
-
 import { translationMessages } from '../../../i18n';
 
 const defaultMessage = 'This is some default message';

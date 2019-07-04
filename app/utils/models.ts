@@ -1,5 +1,5 @@
 import { Saga } from 'redux-saga';
-import { Action, Reducer, Store } from 'redux';
+import { Reducer } from 'redux';
 
 import { SagaInjectorMode } from './constants';
 
@@ -11,5 +11,5 @@ export interface SagaInjectorConfig {
 
 export interface ReducerInjectorConfig {
   key: string;
-  reducer: Reducer<Store<any, Action>, Action>;
+  reducer: Reducer<any, any>;
 }

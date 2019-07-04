@@ -1,11 +1,3 @@
-/**
- *
- * Tests for {{ properCase name }}
- *
- * @see https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/testing
- *
- */
-
 import React from 'react';
 import { render } from 'react-testing-library';
 {{#if wantMessages}}
@@ -19,21 +11,6 @@ import { DEFAULT_LOCALE } from '../../../i18n';
 {{/if}}
 
 describe('<{{ properCase name }} />', () => {
-  it('Expect to not log errors in console', () => {
-    const spy = jest.spyOn(global.console, 'error');
-    const dispatch = jest.fn();
-{{#if wantMessages}}
-    render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <{{ properCase name }} dispatch={dispatch} />
-      </IntlProvider>,
-    );
-{{else}}
-    render(<{{ properCase name }} dispatch={dispatch} />);
-{{/if}}
-    expect(spy).not.toHaveBeenCalled();
-  });
-
   it('Expect to have additional unit tests specified', () => {
     expect(true).toEqual(false);
   });
@@ -49,13 +26,13 @@ describe('<{{ properCase name }} />', () => {
       container: { firstChild },
     } = render(
       <IntlProvider locale={DEFAULT_LOCALE}>
-        <{{ properCase name }} />
+        <{{ properCase name }} domain="" />
       </IntlProvider>,
     );
 {{else}}
     const {
       container: { firstChild },
-    } = render(<{{ properCase name }} />);
+    } = render(<{{ properCase name }} domain="" />);
 {{/if}}
     expect(firstChild).toMatchSnapshot();
   });

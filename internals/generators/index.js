@@ -8,9 +8,12 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
+const chalk = require('chalk');
+
 const componentGenerator = require('./component/index.js');
 const containerGenerator = require('./container/index.js');
 const languageGenerator = require('./language/index.js');
+const getFolderPath = require('./utils/folderPath');
 
 /**
  * Every generated backup file gets this extension
@@ -35,14 +38,10 @@ module.exports = plop => {
   });
   plop.addHelper('curly', (object, open) => (open ? '{' : '}'));
   plop.setActionType('prettify', (answers, config) => {
-    const folderPath = `${path.join(
-      __dirname,
-      '/../../app/',
+    const folderPath = getFolderPath(
       config.path,
-      plop.getHelper('properCase')(answers.name),
-      '**',
-      '**.tsx',
-    )}`;
+      plop.getHelper('properCase')(answers.name)
+    );
 
     try {
       execSync(`npm run prettify -- "${folderPath}"`);
@@ -50,6 +49,24 @@ module.exports = plop => {
     } catch (err) {
       throw err;
     }
+  });
+  plop.setActionType('eslint:fix', (answers, config) => {
+    const folderPath = getFolderPath(
+      config.path,
+      plop.getHelper('properCase')(answers.name)
+    );
+
+    try {
+      execSync(`npm run lint:eslint:fix -- "${folderPath}"`);
+      return folderPath;
+    } catch (err) {
+      throw err;
+    }
+  });
+  plop.setActionType('log', (answers, config) => {
+    process.stdout.write(
+      chalk.yellow(config.message)
+    )
   });
   plop.setActionType('backup', (answers, config) => {
     try {

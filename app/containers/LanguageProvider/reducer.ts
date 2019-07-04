@@ -1,8 +1,3 @@
-/*
- *
- * LanguageProvider reducer
- *
- */
 import produce from 'immer';
 import { createReducer, ActionType, getType } from 'typesafe-actions';
 

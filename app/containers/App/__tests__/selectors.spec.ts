@@ -1,13 +1,21 @@
-import { makeSelectLocation } from 'containers/App/selectors';
+import { RouterState } from 'connected-react-router';
 
-describe('makeSelectLocation', () => {
+import { selectLocation } from 'containers/App/selectors';
+
+describe('selectLocation', () => {
   it('should select the location', () => {
-    const router = {
-      location: { pathname: '/foo' },
+    const router: RouterState = {
+      location: {
+        pathname: '/foo',
+        search: '',
+        state: {},
+        hash: '',
+      },
+      action: 'POP',
     };
     const mockedState = {
       router,
     };
-    expect(makeSelectLocation()(mockedState)).toEqual(router.location);
+    expect(selectLocation(mockedState)).toEqual(router.location);
   });
 });

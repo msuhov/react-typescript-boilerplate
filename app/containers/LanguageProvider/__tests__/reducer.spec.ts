@@ -1,5 +1,5 @@
 import languageProviderReducer from '../reducer';
-import { CHANGE_LOCALE } from '../constants';
+import { changeLocale } from '../actions';
 
 /* eslint-disable default-case, no-param-reassign */
 describe('languageProviderReducer', () => {
@@ -10,15 +10,12 @@ describe('languageProviderReducer', () => {
   });
 
   it('changes the locale', () => {
-    expect(
-      languageProviderReducer(undefined, {
-        type: CHANGE_LOCALE,
-        payload: {
-          locale: 'de',
-        },
-      }),
-    ).toEqual({
+    const action = changeLocale({ locale: 'de' });
+    const actual = languageProviderReducer(undefined, action);
+    const expected = {
       locale: 'de',
-    });
+    };
+
+    expect(actual).toEqual(expected);
   });
 });

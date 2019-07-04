@@ -1,19 +1,20 @@
 // import produce from 'immer';
-import {{ camelCase name }}Reducer from '../reducer';
+import {{ camelCase name }}Reducer, { {{ properCase name }}State, initialState } from '../reducer';
 // import { someAction } from '../actions';
 
-/* eslint-disable default-case, no-param-reassign */
 describe('{{ camelCase name }}Reducer', () => {
-  let state;
+  let state: {{ properCase name }}State;
   beforeEach(() => {
-    state = {
-      // default state params here
-    };
+    state = initialState
   });
 
   it('returns the initial state', () => {
     const expectedResult = state;
     expect({{ camelCase name }}Reducer(undefined, {})).toEqual(expectedResult);
+  });
+
+  it('Expect to have additional unit tests specified', () => {
+    expect(true).toEqual(false);
   });
 
   /**

@@ -1,12 +1,10 @@
-import { changeLocale } from '../actions';
-
-import { CHANGE_LOCALE } from '../constants';
+import { prefix, changeLocale } from '../actions';
 
 describe('LanguageProvider actions', () => {
   describe('Change Local Action', () => {
     it('has a type of CHANGE_LOCALE', () => {
       const expected = {
-        type: CHANGE_LOCALE,
+        type: `${prefix}/CHANGE_LOCALE`,
         payload: {
           locale: 'de',
         },

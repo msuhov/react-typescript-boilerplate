@@ -1,0 +1,7 @@
+import { createStandardAction } from 'typesafe-actions';
+
+const prefix = 'app/{{ properCase name }}';
+
+export const defaultAction = createStandardAction(`${prefix}/DEFAULT_ACTION`)<{
+  domain: string;
+}>();

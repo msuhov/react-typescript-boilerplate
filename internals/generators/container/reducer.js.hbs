@@ -1,20 +1,25 @@
-/*
- *
- * {{ properCase name }} reducer
- *
- */
 import produce from 'immer';
-import { DEFAULT_ACTION } from './constants';
+import { createReducer, ActionType, getType } from 'typesafe-actions';
 
-export const initialState = {};
+import * as actions from './actions';
 
-/* eslint-disable default-case, no-param-reassign */
-const {{ camelCase name }}Reducer = (state = initialState, action) =>
-  produce(state, (/* draft */) => {
-    switch (action.type) {
-      case DEFAULT_ACTION:
-        break;
-    }
+export type {{ properCase name }}State = Readonly<{
+  domain: string;
+}>;
+
+export const initialState: {{ properCase name }}State = {
+  domain: '',
+};
+
+function defaultActionHandler(
+  state: {{ properCase name }}State,
+  action: ActionType<typeof actions.defaultAction>,
+) {
+  return produce(state, draft => {
+    draft.domain = action.payload.domain;
   });
+}
 
-export default {{ camelCase name }}Reducer;
+export default createReducer(initialState, {
+  [getType(actions.defaultAction)]: defaultActionHandler,
+});

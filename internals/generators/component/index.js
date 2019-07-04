@@ -87,6 +87,11 @@ module.exports = {
       path: '/components/',
     });
 
+    actions.push({
+      type: 'eslint:fix',
+      path: '/components/',
+    });
+
     return actions;
   },
 };

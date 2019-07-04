@@ -65,14 +65,14 @@ module.exports = {
     const actions = [
       {
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/index.js',
-        templateFile: './container/index.js.hbs',
+        path: '../../app/containers/{{properCase name}}/index.tsx',
+        templateFile: './container/index.tsx.hbs',
         abortOnFail: true,
       },
       {
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/tests/index.test.js',
-        templateFile: './container/test.js.hbs',
+        path: '../../app/containers/{{properCase name}}/__tests__/index.spec.tsx',
+        templateFile: './container/index.spec.tsx.hbs',
         abortOnFail: true,
       },
     ];
@@ -81,8 +81,8 @@ module.exports = {
     if (data.wantMessages) {
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/messages.js',
-        templateFile: './container/messages.js.hbs',
+        path: '../../app/containers/{{properCase name}}/messages.ts',
+        templateFile: './container/messages.ts.hbs',
         abortOnFail: true,
       });
     }
@@ -93,51 +93,37 @@ module.exports = {
       // Actions
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/actions.js',
-        templateFile: './container/actions.js.hbs',
-        abortOnFail: true,
-      });
-      actions.push({
-        type: 'add',
-        path: '../../app/containers/{{properCase name}}/tests/actions.test.js',
-        templateFile: './container/actions.test.js.hbs',
-        abortOnFail: true,
-      });
-
-      // Constants
-      actions.push({
-        type: 'add',
-        path: '../../app/containers/{{properCase name}}/constants.js',
-        templateFile: './container/constants.js.hbs',
+        path: '../../app/containers/{{properCase name}}/actions.ts',
+        templateFile: './container/actions.ts.hbs',
         abortOnFail: true,
       });
 
       // Selectors
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/selectors.js',
+        path: '../../app/containers/{{properCase name}}/selectors.ts',
         templateFile: './container/selectors.js.hbs',
         abortOnFail: true,
       });
       actions.push({
         type: 'add',
         path:
-          '../../app/containers/{{properCase name}}/tests/selectors.test.js',
-        templateFile: './container/selectors.test.js.hbs',
+          '../../app/containers/{{properCase name}}/__tests__/selectors.spec.ts',
+        templateFile: './container/selectors.spec.ts.hbs',
         abortOnFail: true,
       });
 
       // Reducer
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/reducer.js',
+        path: '../../app/containers/{{properCase name}}/reducer.ts',
         templateFile: './container/reducer.js.hbs',
         abortOnFail: true,
       });
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/tests/reducer.test.js',
-        templateFile: './container/reducer.test.js.hbs',
+        path: '../../app/containers/{{properCase name}}/__tests__/reducer.spec.ts',
+        templateFile: './container/reducer.spec.ts.hbs',
         abortOnFail: true,
       });
     }
@@ -146,14 +132,14 @@ module.exports = {
     if (data.wantSaga) {
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/saga.js',
+        path: '../../app/containers/{{properCase name}}/saga.ts',
         templateFile: './container/saga.js.hbs',
         abortOnFail: true,
       });
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/tests/saga.test.js',
-        templateFile: './container/saga.test.js.hbs',
+        path: '../../app/containers/{{properCase name}}/__tests__/saga.spec.ts',
+        templateFile: './container/saga.spec.ts.hbs',
         abortOnFail: true,
       });
     }
@@ -161,8 +147,8 @@ module.exports = {
     if (data.wantLoadable) {
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/Loadable.js',
-        templateFile: './component/loadable.js.hbs',
+        path: '../../app/containers/{{properCase name}}/Loadable.ts',
+        templateFile: './component/loadable.ts.hbs',
         abortOnFail: true,
       });
     }
@@ -171,6 +157,18 @@ module.exports = {
       type: 'prettify',
       path: '/containers/',
     });
+
+    actions.push({
+      type: 'eslint:fix',
+      path: '/containers/',
+    });
+
+    if (data.wantActionsAndReducer) {
+      actions.push({
+        type: 'log',
+        message: `Don't forget to add - ${data.name.toLowerCase()}: Reducer<${data.name}State, any>; to InjectedReducers in store/reducers`
+      })
+    }
 
     return actions;
   },
