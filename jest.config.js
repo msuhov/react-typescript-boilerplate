@@ -2,7 +2,6 @@ module.exports = {
   collectCoverageFrom: [
     'app/**/*.{ts,tsx}',
     '!app/**/*.spec.{ts,tsx}',
-    '!app/*/RbGenerated*/*.{ts,tsx}',
     '!app/app.tsx',
     '!app/*/*/Loadable.{ts,tsx}',
   ],
@@ -16,12 +15,10 @@ module.exports = {
   },
   moduleDirectories: ['node_modules', 'app'],
   moduleNameMapper: {
-    '.*\\.(css|less|styl|scss|sass)$': '<rootDir>/internals/mocks/cssModule.js',
     '.*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-      '<rootDir>/internals/mocks/image.js',
+      '<rootDir>/internals/__mocks__/file.js',
   },
   setupFilesAfterEnv: ['react-testing-library/cleanup-after-each'],
-  setupFiles: ['raf/polyfill'],
   testRegex: '__tests__/.*\\.spec\\.(ts|tsx)$',
   snapshotSerializers: [],
   transform: {

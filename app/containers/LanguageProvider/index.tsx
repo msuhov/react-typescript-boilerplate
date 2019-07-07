@@ -1,11 +1,3 @@
-/*
- *
- * LanguageProvider
- *
- * this component connects the redux state language locale to the
- * IntlProvider component and i18n messages (loaded from `app/translations`)
- */
-
 import React, { ReactNode } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';

@@ -4,8 +4,7 @@ import { isNotEmpty } from 'ramda-adjunct';
 
 import { InjectSagaDescriptor } from 'store/models';
 
-import { SagaInjectorConfig } from './models';
-import { SagaInjectorMode } from './constants';
+import { SagaInjectorMode, SagaInjectorConfig } from './models';
 
 const checkKey = (key: string) =>
   invariant(

@@ -23,7 +23,10 @@ export const formatTranslationMessages = (
       !messages[key] && locale !== DEFAULT_LOCALE
         ? defaultFormattedMessages[key]
         : messages[key];
-    return Object.assign(formattedMessages, { [key]: formattedMessage });
+    return {
+      ...formattedMessages,
+      [key]: formattedMessage,
+    };
   };
   return Object.keys(messages).reduce(flattenFormattedMessages, {});
 };
@@ -32,15 +35,3 @@ export const translationMessages = {
   en: formatTranslationMessages('en', enTranslationMessages),
   de: formatTranslationMessages('de', deTranslationMessages),
 };
-
-// export default {
-//   appLocales,
-//   translationMessages,
-//   formatTranslationMessages,
-//   DEFAULT_LOCALE,
-// };
-//
-// exports.appLocales = appLocales;
-// exports.formatTranslationMessages = formatTranslationMessages;
-// exports.translationMessages = translationMessages;
-// exports.DEFAULT_LOCALE = DEFAULT_LOCALE;

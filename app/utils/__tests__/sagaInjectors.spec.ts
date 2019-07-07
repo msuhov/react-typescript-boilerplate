@@ -8,8 +8,7 @@ import { Task } from 'redux-saga';
 
 import store from '../../store';
 import getSagaInjectors from '../sagaInjectors';
-import { SagaInjectorConfig } from '../models';
-import { SagaInjectorMode } from '../constants';
+import { SagaInjectorMode, SagaInjectorConfig } from '../models';
 
 function* testSaga() {
   yield put({ type: 'TEST', payload: 'yup' });

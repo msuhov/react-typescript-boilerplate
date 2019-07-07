@@ -1,3 +1,6 @@
+// Polyfill
+import 'react-app-polyfill/ie11';
+
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';

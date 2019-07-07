@@ -1,7 +1,6 @@
 {
   "include": [
-    "./app",
-    "./@types"
+    "./app"
   ],
   "extends": "./node_modules/react-redux-typescript-scripts/tsconfig.json",
   "compilerOptions": {
@@ -12,13 +11,6 @@
     "types": [
       "jest",
       "webpack-env"
-    ],
-    "importHelpers": true
-  },
-  "exclude": [
-    "internals",
-    "server",
-    "docs",
-    "build"
-  ]
+    ]
+  }
 }
