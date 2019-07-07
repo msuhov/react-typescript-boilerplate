@@ -24,6 +24,7 @@ module.exports = merge(common, {
     port: 3000,
     hot: true,
     overlay: true,
+    open: true,
     index: './app/index.html',
     historyApiFallback: true,
     stats: 'errors-only',

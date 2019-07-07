@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 
 import store from '../../store';
 import { useInjectSaga } from '../injectSaga';
-import { SagaInjectorMode } from '../constants';
+import { SagaInjectorMode } from '../models';
 
 function* testSaga() {
   yield put({ type: 'TEST', payload: 'yup' });
